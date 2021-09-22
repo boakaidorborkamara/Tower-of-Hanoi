@@ -61,7 +61,7 @@ body{
     /* background-color: yellow; */
     padding-bottom: 15px;
     padding: 20px;
-    height: 77vh;
+    height: 76vh;
     width: 33.3%;
     display: flex;
     flex-direction: column;
@@ -73,8 +73,8 @@ body{
 
 #tower2{
     /* background-color: red; */
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    border-right: 2px dotted black;
+    border-left: 2px dotted black;
     /* display: none; */
 }
 
@@ -92,7 +92,7 @@ body{
 
 #block1{
     width: 5%;
-    display: none;
+    /* display: none; */
 }
 #block2{
     width: 10%;
