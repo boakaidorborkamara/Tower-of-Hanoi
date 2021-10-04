@@ -48,7 +48,7 @@ function playGame(n, from_rod,  to_rod,  aux_rod){
 
 
 
-//execute dragging of elements
+//codes to enabe game to be functional starts here
 let first_tower_field = document.getElementById("tower1");
 let second_tower_field = document.getElementById("tower2");
 let third_tower_field = document.getElementById("tower3");
@@ -63,7 +63,10 @@ let field_with_selected_paddle;
 let selection_tracker = false;
 //save score
 let score = document.getElementById("score");
-console.log(score);
+//players moves
+let player_move = document.getElementById("player_moves");
+//increment when a paddle is moved
+let player_moves_counter = 0;
 
 
 //generate paddles base on user input
@@ -140,7 +143,8 @@ function changeSelectedElementLocation(){
                     field_with_selected_paddle.removeChild(selected_paddle);
                     console.log(all_paddles);
 
-                    
+                    //track player moves
+                    trackPlayersMoves();
                }      
                    
                checkWin();
@@ -215,6 +219,12 @@ function checkWin(){
         score.innerText = "Score:" + score_counter;
     }
 
+}
+
+function trackPlayersMoves(){
+    
+    player_moves_counter++;
+    player_move.innerText = "Player Moves: " + player_moves_counter;
 }
 
 
