@@ -61,6 +61,9 @@ let selected_paddle;
 let field_with_selected_paddle;
 //tells if a paddle is selected
 let selection_tracker = false;
+//save score
+let score = document.getElementById("score");
+console.log(score);
 
 
 //generate paddles base on user input
@@ -133,10 +136,15 @@ function changeSelectedElementLocation(){
                     `
                     ele.insertAdjacentHTML("afterbegin", new_paddle);
 
+                    //delete element from previous field
                     field_with_selected_paddle.removeChild(selected_paddle);
                     console.log(all_paddles);
+
+                    
                }      
-                        
+                   
+               checkWin();
+
                //update tracker
                selection_tracker = false;
                //add event listner to element with changed locations
@@ -162,6 +170,51 @@ function preventBigPaddlesFromSittingOnSmall(destination_field){
         selected_paddle.style.backgroundColor = "black";
         return false;
     }
+}
+
+//check if user win
+function checkWin(){
+
+    let win_status = false;
+
+    let target_field_paddles = second_tower_field.children;
+    console.log(target_field_paddles);
+
+    let win_position = [];
+    let index_counter = 0;
+
+     //add numbers to win array
+    for(let i = 1; i <= card_amount; i++){
+
+        win_position.push(i);
+        console.log(win_position);
+    }
+
+    // verify wind positions 
+    for(let i = 0; i < win_position.length; i++){
+
+        
+        if(win_position.length === target_field_paddles.length){
+
+            if(parseInt(target_field_paddles[i].innerText) === win_position[i]){
+                console.log("win");
+
+                win_status = true
+            }
+            
+        }
+    }
+
+    //increment score
+    let score_counter = 0;
+    score_counter++
+    console.log(win_status);
+    console.log(score_counter);
+
+    if(win_status === true){
+        score.innerText = "Score:" + score_counter;
+    }
+
 }
 
 
